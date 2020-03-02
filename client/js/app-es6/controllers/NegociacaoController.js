@@ -79,7 +79,7 @@ class NegociacaoController {
     }
     */ 
 
-    // Mongo 
+    // MongoDB
     sendPost(event) {
         /* Validations are made in the server, not in the client side */
         event.preventDefault();
@@ -89,9 +89,18 @@ class NegociacaoController {
             this._inputQuantidade,
             this._inputValor
         )
-        this._mensagem.texto = "Negociação cadastrada com sucesso";
-        this._limpaFormulario();   
-        this._listaNegociacoes.adiciona(negociacao);
+        postService.sendData()
+            .then(response => {
+                if(response.status === 201) {
+                    this._mensagem.texto = "Negociação cadastrada com sucesso";
+                    this._limpaFormulario();   
+                    this._listaNegociacoes.adiciona(negociacao);
+                } else {
+                    this._mensagem.texto = "Não foi possível cadastrar a negociação";
+                    this._limpaFormulario();   
+                }
+            })
+            .catch(err => console.error(err)); 
     }
     
     apaga() {    

@@ -113,25 +113,36 @@ System.register(['../models/ListaNegociacoes', '../models/Mensagem', '../views/N
                 }, {
                     key: 'sendPost',
                     value: function sendPost(event) {
+                        var _this4 = this;
+
                         /* Validations are made in the server, not in the client side */
                         event.preventDefault();
                         var negociacao = this._criaNegociacao();
                         var postService = new PostService(this._inputData, this._inputQuantidade, this._inputValor);
-                        this._mensagem.texto = "Negociação cadastrada com sucesso";
-                        this._limpaFormulario();
-                        this._listaNegociacoes.adiciona(negociacao);
+                        postService.sendData().then(function (response) {
+                            if (response.status === 201) {
+                                _this4._mensagem.texto = "Negociação cadastrada com sucesso";
+                                _this4._limpaFormulario();
+                                _this4._listaNegociacoes.adiciona(negociacao);
+                            } else {
+                                _this4._mensagem.texto = "Não foi possível cadastrar a negociação";
+                                _this4._limpaFormulario();
+                            }
+                        }).catch(function (err) {
+                            return console.error(err);
+                        });
                     }
                 }, {
                     key: 'apaga',
                     value: function apaga() {
-                        var _this4 = this;
+                        var _this5 = this;
 
                         this._service.deletaSalvas();
                         this._service.apaga().then(function (mensagem) {
-                            _this4._mensagem.texto = mensagem;
-                            _this4._listaNegociacoes.esvazia();
+                            _this5._mensagem.texto = mensagem;
+                            _this5._listaNegociacoes.esvazia();
                         }).catch(function (erro) {
-                            return _this4._mensage.texto = erro;
+                            return _this5._mensage.texto = erro;
                         });
                     }
                 }, {

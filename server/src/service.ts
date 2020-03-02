@@ -3,6 +3,7 @@ import mongoose, { Document } from "mongoose";
 import { negotiationSchema } from "./infra/schema";
 import { logger } from "./logger";
 import { httpStatus } from "./http-status"
+import { validationResult } from "express-validator";
 
 export default class Service {
 
@@ -33,17 +34,25 @@ export default class Service {
     }
 
     public static postNegociacao(req: Request, res: Response) {
-        const NegotiationModel = mongoose.model("saved", negotiationSchema);
-        const clientNegotiation = new NegotiationModel({
-            data: req.body.data,
-            quantidade: req.body.quantidade,
-            valor: req.body.valor
-        });
-        clientNegotiation.save((err: Error, data: Document) => {
-            if(err) res.status(httpStatus.badRequest).send(err);
-            const msg: string = "POST method for route /negociacoes";
+        const errors = validationResult(req);
+        if(!errors.isEmpty()) {
+            const msg: string = "Error during POST method for route /negociacoes";
             logger.info(msg); console.log(msg);
-        })
+            res.status(httpStatus.unprocessableEntity).json({ errors: errors.array() });
+        } else {
+            const NegotiationModel = mongoose.model("saved", negotiationSchema);
+            const clientNegotiation = new NegotiationModel({
+                data: req.body.data,
+                quantidade: req.body.quantidade,
+                valor: req.body.valor
+            });
+            clientNegotiation.save((err: Error, data: Document) => {
+                if(err) res.status(httpStatus.badRequest).send(err);
+                const msg: string = "POST method for route /negociacoes";
+                logger.info(msg); console.log(msg);
+                res.status(httpStatus.created).json(data);
+            })
+        }
     }
 
     public static deletaNegociacoes(req: Request, res: Response) {
@@ -54,6 +63,7 @@ export default class Service {
             const msg: string = `DELETE method for route /negociacoes`
             const countedDocuments: string = `Deleted ${data.deletedCount} documents in collection ${collectionName}`
             logger.info(`${msg}. ${countedDocuments}`); console.log(msg);
+            res.status(httpStatus.noContentDeleted).send(msg);
         }); 
     }
 }
