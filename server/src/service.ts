@@ -19,7 +19,7 @@ export default class Service {
     }
 
     public static listaSalvas(req: Request, res: Response) {
-       Service.getMethod("saved", "salvas", res);
+        Service.getMethod("saved", "salvas", res);
     }
 
     private static getMethod(collectionName: string, subRoute: string, res: Response): void {
@@ -33,7 +33,6 @@ export default class Service {
     }
 
     public static postNegociacao(req: Request, res: Response) {
-        req.body.data = new Date(req.body.data.replace(/-/g, '/'));
         const NegotiationModel = mongoose.model("saved", negotiationSchema);
         const clientNegotiation = new NegotiationModel({
             data: req.body.data,

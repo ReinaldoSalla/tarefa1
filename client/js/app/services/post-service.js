@@ -41,28 +41,28 @@ System.register(["./HttpService"], function (_export, _context) {
                     this.inputData = inputData;
                     this.inputQuantidade = inputQuantidade;
                     this.inputValor = inputValor;
+                    this.usDate = this.convertDate(this.inputData.value);
                     this.negociacao = {
-                        data: this.inputData.value,
+                        data: this.usDate,
                         quantidade: this.inputQuantidade.value,
                         valor: this.inputValor.value
                     };
-                    this.sendData();
+                    this.sendData(this.negociacao);
                 }
 
                 _createClass(PostService, [{
+                    key: "convertDate",
+                    value: function convertDate(date) {
+                        // Client = day/month/year = 0/1/2
+                        // Server = year/month/date = 2/1/0
+                        var elements = date.split("/");
+                        elements[1] = parseInt(elements[1] - 1);
+                        return new Date(elements[2], elements[1], elements[0]);
+                    }
+                }, {
                     key: "sendData",
-                    value: function sendData() {
-                        new HttpService().post('/negociacoes', this.negociacao);
-                        /*
-                        .then(() => {
-                            this.inputData.value = '';
-                            this.inputQuantidade.value = 1;
-                            this.inputValor.value = 0.0;
-                            this.inputData.focus();
-                            // For some reason it never gets here, but it sends the POST
-                        })
-                        .catch(erro => alert(`Não foi possível enviar a negociação: ${erro}`));
-                        */
+                    value: function sendData(negociacao) {
+                        new HttpService().post('/negociacoes', negociacao);
                     }
                 }]);
 
