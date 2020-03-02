@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import mongoose, { Document } from "mongoose";
 import { negotiationSchema } from "./infra/schema";
 import { logger } from "./logger";
+import { httpStatus } from "./http-status"
 
 export default class Service {
 
@@ -24,7 +25,7 @@ export default class Service {
     private static getMethod(collectionName: string, subRoute: string, res: Response): void {
         const NegotiationModel = mongoose.model(collectionName, negotiationSchema);
         NegotiationModel.find((err: Error, data: Document) => {
-            if(err) console.log(err);
+            if(err) res.status(httpStatus.badRequest).send(err);
             const msg : string = `GET method for route /negociacoes/${subRoute}`;
             logger.info(msg); console.log(msg);
             res.json(data)
@@ -39,15 +40,18 @@ export default class Service {
             quantidade: req.body.quantidade,
             valor: req.body.valor
         });
-        clientNegotiation.save();
-        const msg: string = "POST method for route /negociacoes";
-        logger.info(msg); console.log(msg);
+        clientNegotiation.save((err: Error, data: Document) => {
+            if(err) res.status(httpStatus.badRequest).send(err);
+            const msg: string = "POST method for route /negociacoes";
+            logger.info(msg); console.log(msg);
+        })
     }
 
     public static deletaNegociacoes(req: Request, res: Response) {
         const collectionName: string = "saved"
         const NegotiationModel = mongoose.model(collectionName, negotiationSchema);
         NegotiationModel.deleteMany((err: Error, data: any) => {
+            if(err) res.status(httpStatus.badRequest).send(err);
             const msg: string = `DELETE method for route /negociacoes`
             const countedDocuments: string = `Deleted ${data.deletedCount} documents in collection ${collectionName}`
             logger.info(`${msg}. ${countedDocuments}`); console.log(msg);
