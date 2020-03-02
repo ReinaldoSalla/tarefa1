@@ -1,18 +1,21 @@
-{"message":"GET method for negotiation with id = 5e4fbf65c999b63570ba3913","level":"info","service":"test-service","datetime":"10:52:5 - 21/1/2020"}
-{"message":"GET method for negotiation with id = 5e4fbf65c999b63570ba3913","level":"info","service":"test-service","datetime":"10:52:5 - 21/1/2020"}
-{"message":"GET method for negotiation with id = 5e4fbf65c999b63570ba3913","level":"info","service":"test-service","datetime":"10:54:39 - 21/1/2020"}
-{"message":"GET method for all negotiations","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"GET method for negotiation with id = 5e4e892def42b335186268be","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"POST method for a new negotiation","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"PUT method for negotiation with id 5e4fe2f4830c971f4cd1bb13","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"PATCH method for a negotiations with id 5e4fe2f4830c971f4cd1bb13","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"DELETE method for negotiation with id 5e4fe2f4830c971f4cd1bb13","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"GET method for all negotiations","level":"info","service":"test-service","datetime":"11:1:24 - 21/1/2020"}
-{"message":"GET method for all negotiations","level":"info","service":"test-service","datetime":"11:11:54 - 21/1/2020"}
-{"message":"GET method for all negotiations","level":"info","service":"test-service","datetime":"11:11:54 - 21/1/2020"}
-{"message":"GET method for all negotiations","level":"info","service":"test-service","datetime":"11:11:54 - 21/1/2020"}
-{"message":"POST method for a new negotiation","level":"info","service":"test-service","datetime":"11:42:41 - 21/1/2020"}
-{"message":"GET method for all negotiations","level":"info","service":"test-service","datetime":"11:54:42 - 21/1/2020"}
-{"message":"POST method for a new negotiation","level":"info","service":"test-service","datetime":"11:54:42 - 21/1/2020"}
-{"message":"POST method for a new negotiation","level":"info","service":"test-service","datetime":"11:54:42 - 21/1/2020"}
-{"message":"POST method for a new negotiation","level":"info","service":"test-service","datetime":"11:54:42 - 21/1/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/semana","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/anterior","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/retrasada","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 3 documents in collection saved","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:31:32 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:35:44 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:35:44 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 2 documents in collection saved","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/semana","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/anterior","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/retrasada","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 1 documents in collection saved","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}

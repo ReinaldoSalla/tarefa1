@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose, { Document } from "mongoose";
 import { negotiationSchema } from "./infra/schema";
+import { logger } from "./logger";
 
 export default class Service {
 
@@ -24,13 +25,13 @@ export default class Service {
         const NegotiationModel = mongoose.model(collectionName, negotiationSchema);
         NegotiationModel.find((err: Error, data: Document) => {
             if(err) console.log(err);
-            console.log(`GET method for /negociacoes/${subRoute}`);
+            const msg : string = `GET method for route /negociacoes/${subRoute}`;
+            logger.info(msg); console.log(msg);
             res.json(data)
         });
     }
 
     public static postNegociacao(req: Request, res: Response) {
-        console.log("POST method for /negociacoes");
         req.body.data = new Date(req.body.data.replace(/-/g, '/'));
         const NegotiationModel = mongoose.model("saved", negotiationSchema);
         const clientNegotiation = new NegotiationModel({
@@ -39,13 +40,17 @@ export default class Service {
             valor: req.body.valor
         });
         clientNegotiation.save();
+        const msg: string = "POST method for route /negociacoes";
+        logger.info(msg); console.log(msg);
     }
 
     public static deletaNegociacoes(req: Request, res: Response) {
         const collectionName: string = "saved"
         const NegotiationModel = mongoose.model(collectionName, negotiationSchema);
         NegotiationModel.deleteMany((err: Error, data: any) => {
-            console.log(`DELETE method for /negociacoes. Deleted ${data.deletedCount} documents in collection ${collectionName}`)
+            const msg: string = `DELETE method for route /negociacoes`
+            const countedDocuments: string = `Deleted ${data.deletedCount} documents in collection ${collectionName}`
+            logger.info(`${msg}. ${countedDocuments}`); console.log(msg);
         }); 
     }
 }
