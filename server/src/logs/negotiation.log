@@ -19,3 +19,6 @@
 {"message":"DELETE method for route /negociacoes. Deleted 1 documents in collection saved","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
 {"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
 {"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 2 documents in collection saved","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 1 documents in collection saved","level":"info","service":"test-service","datetime":"9:39:44 - 2/2/2020"}
