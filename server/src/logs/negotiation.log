@@ -319,3 +319,18 @@
 {"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:3:36 - 2/2/2020"}
 {"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:3:36 - 2/2/2020"}
 {"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:3:36 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 3 documents in collection saved","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/semana","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/anterior","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/retrasada","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"DELETE method for route /negociacoes. Deleted 1 documents in collection saved","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"Error during POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"Error during POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"16:38:29 - 2/2/2020"}
