@@ -31,3 +31,4 @@
 {"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:52:0 - 2/2/2020"}
 {"message":"POST method for route /negociacoes","level":"info","service":"test-service","datetime":"9:52:0 - 2/2/2020"}
 {"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:52:0 - 2/2/2020"}
+{"message":"GET method for route /negociacoes/salvas","level":"info","service":"test-service","datetime":"9:52:0 - 2/2/2020"}
