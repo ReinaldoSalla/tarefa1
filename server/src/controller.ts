@@ -1,5 +1,5 @@
 import { Application } from "express";
-import { Service } from "./service";
+import Service from "./service";
 
 export class Controller {
     constructor(private app: Application) {
@@ -11,7 +11,7 @@ export class Controller {
         this.app.route("/negociacoes/anterior").get(Service.listaAnterior);
         this.app.route("/negociacoes/retrasada").get(Service.listaRetrasada);
         this.app.route("/negociacoes/salvas").get(Service.listaSalvas);
-        this.app.route("/negociacoes").post(Service.cadastraNegociacao);
+        this.app.route("/negociacoes").post(Service.postNegociacao);
         this.app.route("/negociacoes").delete(Service.deletaNegociacoes);
     }
 }

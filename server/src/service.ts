@@ -2,48 +2,37 @@ import { Request, Response } from "express";
 import mongoose, { Document } from "mongoose";
 import { negotiationSchema } from "./infra/schema";
 
-export class Service {
+export default class Service {
 
     public static listaSemana(req: Request, res: Response) {
-        const NegotiationModel = mongoose.model("currents", negotiationSchema);
-        NegotiationModel.find((err: Error, data: Document) => {
-            if(err) console.log(err);
-            console.log("GET method for /negociacoes/semana");
-            res.json(data);
-        })
+        Service.getMethod("current", "semana", res);      
     }
 
     public static listaAnterior(req: Request, res: Response) {
-        const NegotiationModel = mongoose.model("lasts", negotiationSchema);
-        NegotiationModel.find((err: Error, data: Document) => {
-            if(err) console.log(err);
-            console.log("GET method for /negociacoes/anterior");
-            res.json(data);
-        })
+        Service.getMethod("last", "anterior", res);
     }
 
     public static listaRetrasada(req: Request, res: Response) {
-        const NegotiationModel = mongoose.model("previouslasts", negotiationSchema);
-        NegotiationModel.find((err: Error, data: Document) => {
-            if(err) console.log(err);
-            console.log("GET method for /negociacoes/retrasada");
-            res.json(data);
-        })
+        Service.getMethod("previouslast", "retrasada", res);
     }
 
     public static listaSalvas(req: Request, res: Response) {
-        const NegotiationModel = mongoose.model("saveds", negotiationSchema);
-        NegotiationModel.find((err: Error, data: Document) => {
-            if(err) console.log(err);
-            console.log("GET method for /negociacoes/salvas");
-            res.json(data);
-        })
+       Service.getMethod("saved", "salvas", res);
     }
 
-    public static cadastraNegociacao(req: Request, res: Response) {
+    private static getMethod(collectionName: string, subRoute: string, res: Response): void {
+        const NegotiationModel = mongoose.model(collectionName, negotiationSchema);
+        NegotiationModel.find((err: Error, data: Document) => {
+            if(err) console.log(err);
+            console.log(`GET method for /negociacoes/${subRoute}`);
+            res.json(data)
+        });
+    }
+
+    public static postNegociacao(req: Request, res: Response) {
         console.log("POST method for /negociacoes");
         req.body.data = new Date(req.body.data.replace(/-/g, '/'));
-        const NegotiationModel = mongoose.model("saveds", negotiationSchema);
+        const NegotiationModel = mongoose.model("saved", negotiationSchema);
         const clientNegotiation = new NegotiationModel({
             data: req.body.data,
             quantidade: req.body.quantidade,
@@ -53,7 +42,7 @@ export class Service {
     }
 
     public static deletaNegociacoes(req: Request, res: Response) {
-        const collectionName: string = "saveds"
+        const collectionName: string = "saved"
         const NegotiationModel = mongoose.model(collectionName, negotiationSchema);
         NegotiationModel.deleteMany((err: Error, data: any) => {
             console.log(`DELETE method for /negociacoes. Deleted ${data.deletedCount} documents in collection ${collectionName}`)
