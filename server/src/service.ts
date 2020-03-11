@@ -4,6 +4,7 @@ import { negotiationSchema } from "./infra/schema";
 import { logger } from "./logger";
 import { httpStatus } from "./http-status"
 import { validationResult } from "express-validator";
+import Calendar from "./utils/calendar";
 
 export default class Service {
 
@@ -40,9 +41,10 @@ export default class Service {
             logger.info(msg); console.log(msg);
             res.status(httpStatus.unprocessableEntity).json({ errors: errors.array() });
         } else {
+            const usDate: Date = Calendar.convertFromBrToUs(req.body.data);
             const NegotiationModel = mongoose.model("saved", negotiationSchema);
             const clientNegotiation = new NegotiationModel({
-                data: req.body.data,
+                data: usDate,
                 quantidade: req.body.quantidade,
                 valor: req.body.valor
             });

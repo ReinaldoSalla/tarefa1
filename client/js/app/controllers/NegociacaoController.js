@@ -11,6 +11,13 @@ System.register(['../models/ListaNegociacoes', '../models/Mensagem', '../views/N
         }
     }
 
+    function currentInstance() {
+
+        return negociacaoController;
+    }
+
+    _export('currentInstance', currentInstance);
+
     return {
         setters: [function (_modelsListaNegociacoes) {
             ListaNegociacoes = _modelsListaNegociacoes.ListaNegociacoes;
@@ -176,12 +183,6 @@ System.register(['../models/ListaNegociacoes', '../models/Mensagem', '../views/N
             }();
 
             negociacaoController = new NegociacaoController();
-            function currentInstance() {
-
-                return negociacaoController;
-            }
-
-            _export('currentInstance', currentInstance);
         }
     };
 });
