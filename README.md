@@ -1,4 +1,4 @@
-Usage: 
+## Usage: 
 
 `cd server && npm run start` 
 
@@ -8,7 +8,7 @@ static content is served on localhost:3000
 
 
 
-Http methods: 
+## Http methods: 
 
 GET: localhost:3000/negociacoes/salvas 
 
@@ -18,7 +18,7 @@ DELETE: localhost:3000//negociacoes
 
 
 
-Importing negotiations: 
+## Importing negotiations: 
 
 `cd src/client/infra && npx ts-node populate.db` 
 
@@ -30,7 +30,7 @@ GET: localhost:3000/negociacoes/retrasada
 
 
 
-Todo: 
+## Todo: 
 
 Validate the date (currently, only amount and valid are being validated) 
 
@@ -42,5 +42,5 @@ DELETE method for one negotiation with id
 
 
 
-Improved version using nestjs: 
+## Improved version using nestjs: 
 https://github.com/ReinaldoSalla/tarefa5
