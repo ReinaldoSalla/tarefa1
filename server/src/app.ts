@@ -9,6 +9,9 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import { Controller } from "./controller";
 import { configureConnection } from "./infra/connection";
+import helmet from "helmet";
+import csurf from "csurf";
+import rateLimit from "express-rate-limit";
 
 export default class App {
     public app: Application;
@@ -29,12 +32,20 @@ export default class App {
     }
 
     private configureMiddlewares(): void {
+        this.app.use(helmet());
         this.app.use(bodyParser.json());
         this.app.use(cors());
         this.app.use((req: Request, res: Response, next: NextFunction) => {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
             next();
-        })
+        });
+        if (process.env.NODE_ENV === "production") {
+            this.app.use(rateLimit({
+                windowMs: 60 * 1000, // 1 minute
+                max: 100 // limit each IP to 100 requests/minute
+            }));
+        }
+        //this.app.use(csurf()); //if using cookies and authorization/authentication
     }
 }
